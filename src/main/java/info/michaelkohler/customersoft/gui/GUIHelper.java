@@ -40,6 +40,9 @@ import javax.swing.UIManager;
  *
  */
 public class GUIHelper {
+    
+    private static final int BOUND_WIDTH = 150;
+    private static final int BOUND_HEIGHT = 150;
 
     /**
      * makes the component visible.
@@ -78,7 +81,7 @@ public class GUIHelper {
      */
     public static void sizeFrame(JFrame frame) {
         Dimension dim = frame.getToolkit().getScreenSize();
-        frame.setSize(dim.width / 2, dim.height / 2);
+        frame.setSize(dim.width / 2 + BOUND_WIDTH, dim.height / 2 + BOUND_HEIGHT);
     }
 
     /**
@@ -88,7 +91,7 @@ public class GUIHelper {
      */
     public static void centerFrame(JFrame frame) {
         Dimension dim = frame.getToolkit().getScreenSize();
-        frame.setLocation(dim.width / 4, dim.height / 4);
+        frame.setLocation(dim.width / 4 - BOUND_WIDTH / 2, dim.height / 4 - BOUND_HEIGHT / 2);
     }
 
     /**
