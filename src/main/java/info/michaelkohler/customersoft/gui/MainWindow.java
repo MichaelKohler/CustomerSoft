@@ -112,6 +112,14 @@ public class MainWindow extends JFrame {
         newItem.add(productItem);
         menu.add(newItem);
         
+        JMenuItem shortcutItem = new JMenuItem("Jump...", 'J');
+        shortcutItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F6, 0));
+        shortcutItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("Shortcut called");
+            }
+        });
+        menu.add(shortcutItem);
         JMenuItem importItem = new JMenuItem("Import...", 'I');
         importItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
@@ -148,6 +156,32 @@ public class MainWindow extends JFrame {
         JMenu menu = new JMenu("Subsystems");
         menu.setMnemonic('S');
         menu.getPopupMenu().setBorder(BorderFactory.createLineBorder(BORDER_COLOR, 1));
+        
+        JMenu customerItem = new JMenu("Customer");
+        JMenuItem searchItem = new JMenuItem("Search...", 'S');
+        searchItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, Event.CTRL_MASK));
+        searchItem.setPreferredSize(new Dimension(MENUITEM_WIDTH, MENUITEM_HEIGHT));
+        searchItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("Search called");
+            }
+        });
+        customerItem.add(searchItem);
+        JMenuItem ratingItem = new JMenuItem("Rating...", 'R');
+        ratingItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("Rating called");
+            }
+        });
+        customerItem.add(ratingItem);
+        JMenuItem tasksItem = new JMenuItem("Tasks...", 'T');
+        tasksItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("Tasks called");
+            }
+        });
+        customerItem.add(tasksItem);
+        menu.add(customerItem);
         
         // Permission!
         JMenuItem paramItem = new JMenuItem("Parameter", 'P');
