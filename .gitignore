@@ -1,2 +1,7 @@
 *.class
+
 .settings
+.tmp
+.swp
+
+target
