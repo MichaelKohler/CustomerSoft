@@ -43,7 +43,7 @@ import javax.swing.KeyStroke;
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
 
-    private final int MENUITEM_WIDTH = 200;
+    private final int MENUITEM_WIDTH = 150;
     private final int MENUITEM_HEIGHT = 20;
     private final Color BORDER_COLOR = new Color(160, 160, 160);
 
@@ -92,6 +92,40 @@ public class MainWindow extends JFrame {
         menu.setMnemonic('F');
         menu.getPopupMenu().setBorder(BorderFactory.createLineBorder(BORDER_COLOR, 1));
         
+        JMenu newItem = new JMenu("New");
+        newItem.setMnemonic('N');
+        JMenuItem customerItem = new JMenuItem("Customer...", 'C');
+        customerItem.setPreferredSize(new Dimension(MENUITEM_WIDTH, MENUITEM_HEIGHT));
+        customerItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, Event.CTRL_MASK));
+        customerItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("Customer called");
+            }
+        });
+        newItem.add(customerItem);
+        JMenuItem productItem = new JMenuItem("Product...", 'P');
+        productItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("Product called");
+            }
+        });
+        newItem.add(productItem);
+        menu.add(newItem);
+        
+        JMenuItem importItem = new JMenuItem("Import...", 'I');
+        importItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("Import called");
+            }
+        });
+        menu.add(importItem);
+        JMenuItem exportItem = new JMenuItem("Export...", 'X');
+        exportItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("Export called");
+            }
+        });
+        menu.add(exportItem);
         JMenuItem exitItem = new JMenuItem("Exit", 'E');
         exitItem.setPreferredSize(new Dimension(MENUITEM_WIDTH, MENUITEM_HEIGHT));
         exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, Event.CTRL_MASK));
@@ -115,8 +149,32 @@ public class MainWindow extends JFrame {
         menu.setMnemonic('S');
         menu.getPopupMenu().setBorder(BorderFactory.createLineBorder(BORDER_COLOR, 1));
         
+        // Permission!
+        JMenuItem paramItem = new JMenuItem("Parameter", 'P');
+        paramItem.setPreferredSize(new Dimension(MENUITEM_WIDTH, MENUITEM_HEIGHT));
+        paramItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("Params called");
+            }
+        });
+        menu.add(paramItem);
+        // Permission!
+        JMenuItem usersItem = new JMenuItem("User Management", 'U');
+        usersItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("Users called");
+            }
+        });
+        menu.add(usersItem);
+        // Permission!
+        JMenuItem backupItem = new JMenuItem("Backups", 'B');
+        backupItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("Users called");
+            }
+        });
+        menu.add(backupItem);
         JMenuItem settingsItem = new JMenuItem("Settings", 'S');
-        settingsItem.setPreferredSize(new Dimension(MENUITEM_WIDTH, MENUITEM_HEIGHT));
         settingsItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 System.out.println("Settings called");
@@ -146,6 +204,13 @@ public class MainWindow extends JFrame {
             }
         });
         menu.add(helpItem);
+        JMenuItem updatesItem = new JMenuItem("Updates", 'U');
+        updatesItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("About called");
+            }
+        });
+        menu.add(updatesItem);
         JMenuItem aboutItem = new JMenuItem("About", 'A');
         aboutItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
