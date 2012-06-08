@@ -19,8 +19,8 @@ package info.michaelkohler.customersoft.gui;
  */
 
 import info.michaelkohler.helpertools.logging.Debugger;
+
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
@@ -79,7 +79,8 @@ public class GUIHelper {
      * @param aHeight defining the height of the window
      */
     public static void sizeAndCenterFrame(JFrame aFrame, int aWidth, int aHeight) {
-        
+        aFrame.setSize(aWidth, aHeight);
+        aFrame.setLocationRelativeTo(null);
     }
 
     /**
@@ -89,13 +90,15 @@ public class GUIHelper {
      */
     @SuppressWarnings("serial")
     public static void setESCCloseable(final JFrame aFrame) {
-        KeyStroke escapeKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
+        KeyStroke escapeKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0,
+                                                                                  false);
         Action escapeAction = new AbstractAction() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent ae) {
                 aFrame.dispose();
             }
         }; 
-        aFrame.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(escapeKeyStroke, "ESCAPE");
+        aFrame.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+                  .put(escapeKeyStroke, "ESCAPE");
         aFrame.getRootPane().getActionMap().put("ESCAPE", escapeAction);
         
     }
