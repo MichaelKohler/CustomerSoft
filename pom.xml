@@ -40,10 +40,5 @@
             <scope>test</scope>
             <version>[4.10]</version>
         </dependency>
-        <dependency>
-            <groupId>info.michaelkohler</groupId>
-            <artifactId>helpertools</artifactId>
-            <version>1.0</version>
-        </dependency>
     </dependencies>
 </project>

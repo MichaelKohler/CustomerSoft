@@ -18,7 +18,7 @@ package info.michaelkohler.customersoft.gui;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import info.michaelkohler.helpertools.Debugger;
+import info.michaelkohler.helpertools.logging.Debugger;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
