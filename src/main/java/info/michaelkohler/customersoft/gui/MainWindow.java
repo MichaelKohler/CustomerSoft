@@ -182,9 +182,17 @@ public class MainWindow extends JFrame {
         customerItem.add(tasksItem);
         menu.add(customerItem);
         
+     // Permission!
+        JMenuItem productsItem = new JMenuItem("Products...", 'P');
+        productsItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                System.out.println("Params called");
+            }
+        });
+        menu.add(productsItem);
+        
         // Permission!
-        JMenuItem paramItem = new JMenuItem("Parameter", 'P');
-        paramItem.setPreferredSize(new Dimension(MENUITEM_WIDTH, MENUITEM_HEIGHT));
+        JMenuItem paramItem = new JMenuItem("Parameter", 'a');
         paramItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 System.out.println("Params called");
