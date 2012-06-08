@@ -56,8 +56,7 @@ public class MainWindow extends JFrame {
         this.setResizable(true);
         this.setTitle("CustomerSoft - Main (History)");
         GUIHelper.setESCCloseable(this);
-        GUIHelper.centerFrame(this);
-        GUIHelper.sizeFrame(this);
+        GUIHelper.sizeAndCenterFrame(this, 350, 250);
         
         createContent();
         createMenuBar();

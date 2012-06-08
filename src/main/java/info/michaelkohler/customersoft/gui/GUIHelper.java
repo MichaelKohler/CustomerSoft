@@ -40,26 +40,23 @@ import javax.swing.UIManager;
  *
  */
 public class GUIHelper {
-    
-    private static final int BOUND_WIDTH = 150;
-    private static final int BOUND_HEIGHT = 150;
 
     /**
      * makes the component visible.
      * 
-     * @param component which component should be visible
+     * @param aComponent which component should be visible
      */
-    public static void showComponent(Component component) {
-        component.setVisible(true);
+    public static void showComponent(Component aComponent) {
+        aComponent.setVisible(true);
     }
 
     /**
      * makes the component invisible.
      * 
-     * @param component which component should be invisible
+     * @param aComponent which component should be invisible
      */
-    public static void hideComponent(Component component) {
-        component.setVisible(false);
+    public static void hideComponent(Component aComponent) {
+        aComponent.setVisible(false);
     }
     
     /**
@@ -77,38 +74,29 @@ public class GUIHelper {
     /**
      * sizes the JFrame
      * 
-     * @param frame which needs to be sized
+     * @param aFrame which needs to be sized
+     * @param aWidth defining the width of the window
+     * @param aHeight defining the height of the window
      */
-    public static void sizeFrame(JFrame frame) {
-        Dimension dim = frame.getToolkit().getScreenSize();
-        frame.setSize(dim.width / 2 + BOUND_WIDTH, dim.height / 2 + BOUND_HEIGHT);
-    }
-
-    /**
-     * centers the JFrame
-     * 
-     * @param frame which needs to be centered
-     */
-    public static void centerFrame(JFrame frame) {
-        Dimension dim = frame.getToolkit().getScreenSize();
-        frame.setLocation(dim.width / 4 - BOUND_WIDTH / 2, dim.height / 4 - BOUND_HEIGHT / 2);
+    public static void sizeAndCenterFrame(JFrame aFrame, int aWidth, int aHeight) {
+        
     }
 
     /**
      * makes the JFrame closeable with ESC key.
      * 
-     * @param component which needs to be closeable with the ESC key
+     * @param aFrame which needs to be closeable with the ESC key
      */
     @SuppressWarnings("serial")
-    public static void setESCCloseable(final JFrame frame) {
+    public static void setESCCloseable(final JFrame aFrame) {
         KeyStroke escapeKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
         Action escapeAction = new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();
+                aFrame.dispose();
             }
         }; 
-        frame.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(escapeKeyStroke, "ESCAPE");
-        frame.getRootPane().getActionMap().put("ESCAPE", escapeAction);
+        aFrame.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(escapeKeyStroke, "ESCAPE");
+        aFrame.getRootPane().getActionMap().put("ESCAPE", escapeAction);
         
     }
 
