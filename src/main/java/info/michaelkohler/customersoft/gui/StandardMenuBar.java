@@ -137,13 +137,13 @@ public class StandardMenuBar extends JMenuBar {
             }
         });
         customerItem.add(searchItem);
-        JMenuItem ratingItem = new JMenuItem("Rating...", 'R');
-        ratingItem.addActionListener(new ActionListener() {
+        JMenuItem overviewItem = new JMenuItem("Overview..", 'O');
+        overviewItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                System.out.println("Rating called");
+                System.out.println("Overview called");
             }
         });
-        customerItem.add(ratingItem);
+        customerItem.add(overviewItem);
         JMenuItem tasksItem = new JMenuItem("Tasks...", 'T');
         tasksItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
