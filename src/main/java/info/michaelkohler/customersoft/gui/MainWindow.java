@@ -1,5 +1,7 @@
 package info.michaelkohler.customersoft.gui;
 
+import javax.swing.JFrame;
+
 /*
  * CustomerSoft
  * Copyright (C) 2012  Michael Kohler <michaelkohler@linux.com>
