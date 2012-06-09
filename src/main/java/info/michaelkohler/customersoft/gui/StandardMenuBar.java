@@ -84,7 +84,9 @@ public class StandardMenuBar extends JMenuBar {
         shortcutItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F6, 0));
         shortcutItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                System.out.println("Shortcut called");
+                ShortcutWindow scWin = new ShortcutWindow();
+                scWin.createShortcutWindow();
+                scWin.showShortcutWindow();
             }
         });
         menu.add(shortcutItem);
