@@ -70,10 +70,14 @@ public class ShortcutWindow extends JFrame {
     /**
      * processes the shortcut and calls the appropriate window
      * 
+     * TODO: use enums for types?
+     * 
      * @param aShortcut text of the input field
      */
     private void processShortcut(String aShortcut) {
-        System.out.println(aShortcut);
+        if (aShortcut.equals("CUST_OVER")) {
+            new CustomerOverviewWindow(750, 450).createAndShowWindow();
+        }
     }
     
     /**
