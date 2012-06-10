@@ -1,15 +1,5 @@
 package info.michaelkohler.customersoft.gui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
-
 /*
  * CustomerSoft
  * Copyright (C) 2012  Michael Kohler <michaelkohler@linux.com>
@@ -27,6 +17,10 @@ import javax.swing.table.TableRowSorter;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+import java.awt.BorderLayout;
+
+import javax.swing.JPanel;
 
 /**
  * The CustomerOverviewWindow is responsible for displaying the customer overview.
@@ -64,19 +58,8 @@ public class CustomerOverviewWindow extends AbstractOverviewWindow {
                 { "bar1", "bar2", "bar3" }
         };
         
-        TableModel model = new DefaultTableModel(data, columnNames) {
-            public Class<?> getColumnClass(int column) {
-                return getValueAt(0, column).getClass();
-            }
-        };
-        
-        JTable overviewTable = new JTable(model);
-        overviewTable.setGridColor(new Color(230, 230, 230));
-        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
-        overviewTable.setRowSorter(sorter);
-        JScrollPane scrollPane = new JScrollPane(overviewTable);
-        panel.add(scrollPane, BorderLayout.CENTER);
-        
+        ScrollableTable scrollableTablePane = new ScrollableTable(data, columnNames);
+        panel.add(scrollableTablePane, BorderLayout.CENTER);
         return panel;
     }
 
