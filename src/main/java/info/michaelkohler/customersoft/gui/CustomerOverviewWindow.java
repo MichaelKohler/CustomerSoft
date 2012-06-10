@@ -6,7 +6,9 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /*
  * CustomerSoft
@@ -62,24 +64,16 @@ public class CustomerOverviewWindow extends AbstractOverviewWindow {
                 { "bar1", "bar2", "bar3" }
         };
         
-        AbstractTableModel model = new AbstractTableModel() {
-            public String getColumnName(int col) {
-                return columnNames[col].toString();
-            }
-            public int getRowCount() { return data.length; }
-            public int getColumnCount() { return columnNames.length; }
-            public Object getValueAt(int row, int col) {
-                return data[row][col];
-            }
-            public boolean isCellEditable(int row, int col) { return true; }
-            public void setValueAt(Object value, int row, int col) {
-                data[row][col] = value.toString();
-                fireTableCellUpdated(row, col);
+        TableModel model = new DefaultTableModel(data, columnNames) {
+            public Class<?> getColumnClass(int column) {
+                return getValueAt(0, column).getClass();
             }
         };
         
         JTable overviewTable = new JTable(model);
         overviewTable.setGridColor(new Color(230, 230, 230));
+        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+        overviewTable.setRowSorter(sorter);
         JScrollPane scrollPane = new JScrollPane(overviewTable);
         panel.add(scrollPane, BorderLayout.CENTER);
         
