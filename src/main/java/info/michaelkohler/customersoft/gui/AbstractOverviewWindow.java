@@ -19,6 +19,7 @@ package info.michaelkohler.customersoft.gui;
  */
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  * An abstract window which provides a simple overview window. This has nothing
@@ -32,6 +33,7 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public abstract class AbstractOverviewWindow extends JFrame {
     
+    private String _title;
     private int _width;
     private int _height;
     
@@ -41,7 +43,8 @@ public abstract class AbstractOverviewWindow extends JFrame {
      * @param aWidth defining the width of the window
      * @param aHeight defining the height of the window
      */
-    protected AbstractOverviewWindow(int aWidth, int aHeight) {
+    protected AbstractOverviewWindow(String aTitle, int aWidth, int aHeight) {
+        _title = aTitle;
         _width = aWidth;
         _height = aHeight;
     }
@@ -50,9 +53,11 @@ public abstract class AbstractOverviewWindow extends JFrame {
      * Creates and shows the window
      */
     public void createAndShowWindow() {
+        this.setTitle(_title);
         GUIHelper.sizeAndCenterFrame(this, _width, _height);
         GUIHelper.setESCCloseable(this);
         addStandardMenubar();
+        this.add(createContentPanel());
         GUIHelper.showComponent(this);
     }
     
@@ -66,5 +71,5 @@ public abstract class AbstractOverviewWindow extends JFrame {
     /**
      * abstract method which creates the content (delegated to the subclass)
      */
-    protected abstract void createContentPanel();
+    protected abstract JPanel createContentPanel();
 }

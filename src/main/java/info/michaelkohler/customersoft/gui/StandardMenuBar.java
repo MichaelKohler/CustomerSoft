@@ -140,7 +140,8 @@ public class StandardMenuBar extends JMenuBar {
         JMenuItem overviewItem = new JMenuItem("Overview..", 'O');
         overviewItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                System.out.println("Overview called");
+                new CustomerOverviewWindow("Customer Overview", 750, 450)
+                      .createAndShowWindow();
             }
         });
         customerItem.add(overviewItem);

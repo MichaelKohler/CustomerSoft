@@ -1,4 +1,12 @@
 package info.michaelkohler.customersoft.gui;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
 /*
  * CustomerSoft
  * Copyright (C) 2012  Michael Kohler <michaelkohler@linux.com>
@@ -32,13 +40,33 @@ public class CustomerOverviewWindow extends AbstractOverviewWindow {
      * Constructor which calls the superclass' constructor with the desired
      * window size.
      */
-    public CustomerOverviewWindow(int aWidth, int aHeight) {
-        super(aWidth, aHeight);
+    public CustomerOverviewWindow(String aTitle, int aWidth, int aHeight) {
+        super(aTitle, aWidth, aHeight);
     }
 
     @Override
-    protected void createContentPanel() {
-        // TODO Auto-generated method stub
+    protected JPanel createContentPanel() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        
+        String[] columnNames = { "Test1", "Test2", "Test3" };
+        String[][] data = {
+                { "foo1", "foo2", "foo3" },
+                { "bar1", "bar2", "bar3" },
+                { "bar1", "bar2", "bar3" },
+                { "bar1", "bar2", "bar3" },
+                { "bar1", "bar2", "bar3" },
+                { "bar1", "bar2", "bar3" },
+                { "bar1", "bar2", "bar3" },
+                { "bar1", "bar2", "bar3" }
+        };
+        
+        JTable overviewTable = new JTable(data, columnNames);
+        overviewTable.setGridColor(new Color(230, 230, 230));
+        JScrollPane scrollPane = new JScrollPane(overviewTable);
+        panel.add(scrollPane, BorderLayout.CENTER);
+        
+        return panel;
     }
 
 }
