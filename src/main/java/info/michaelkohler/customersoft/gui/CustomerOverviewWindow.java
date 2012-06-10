@@ -6,6 +6,7 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
 
 /*
  * CustomerSoft
@@ -49,8 +50,8 @@ public class CustomerOverviewWindow extends AbstractOverviewWindow {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         
-        String[] columnNames = { "Test1", "Test2", "Test3" };
-        String[][] data = {
+        final String[] columnNames = { "Test1", "Test2", "Test3" };
+        final String[][] data = {
                 { "foo1", "foo2", "foo3" },
                 { "bar1", "bar2", "bar3" },
                 { "bar1", "bar2", "bar3" },
@@ -61,7 +62,23 @@ public class CustomerOverviewWindow extends AbstractOverviewWindow {
                 { "bar1", "bar2", "bar3" }
         };
         
-        JTable overviewTable = new JTable(data, columnNames);
+        AbstractTableModel model = new AbstractTableModel() {
+            public String getColumnName(int col) {
+                return columnNames[col].toString();
+            }
+            public int getRowCount() { return data.length; }
+            public int getColumnCount() { return columnNames.length; }
+            public Object getValueAt(int row, int col) {
+                return data[row][col];
+            }
+            public boolean isCellEditable(int row, int col) { return true; }
+            public void setValueAt(Object value, int row, int col) {
+                data[row][col] = value.toString();
+                fireTableCellUpdated(row, col);
+            }
+        };
+        
+        JTable overviewTable = new JTable(model);
         overviewTable.setGridColor(new Color(230, 230, 230));
         JScrollPane scrollPane = new JScrollPane(overviewTable);
         panel.add(scrollPane, BorderLayout.CENTER);
