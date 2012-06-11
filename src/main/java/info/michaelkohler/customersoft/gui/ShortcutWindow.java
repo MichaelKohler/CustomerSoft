@@ -18,8 +18,6 @@ package info.michaelkohler.customersoft.gui;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import info.michaelkohler.customersoft.gui.AbstractOverviewWindow.ButtonLayout;
-
 import java.awt.BorderLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -36,20 +34,29 @@ import javax.swing.JTextField;
  */
 @SuppressWarnings("serial")
 public class ShortcutWindow extends JFrame {
+    
+    private WindowFactory _windowFactory;
 
-    public ShortcutWindow() {
+    /**
+     * Constructor which assembles the shortcut window
+     * 
+     * @param aWindowFactory which delivers instances of the windows
+     */
+    public ShortcutWindow(WindowFactory aWindowFactory) {
         super();
+        _windowFactory = aWindowFactory;
     }
     
     /**
      * creates the ShortcutWindow
      */
-    public void createShortcutWindow() {
+    public void initAndShowWindow() {
         this.setTitle("Shortcut");
         GUIHelper.sizeAndCenterFrame(this, 250, 50);
         GUIHelper.setESCCloseable(this);
         this.setLayout(new BorderLayout());
         this.add(createInputField(), BorderLayout.NORTH);
+        GUIHelper.showComponent(this);
     }
     
     /**
@@ -78,8 +85,8 @@ public class ShortcutWindow extends JFrame {
      */
     private void processShortcut(String aShortcut) {
         if (aShortcut.equals("CUST_OVER")) {
-            new CustomerOverviewWindow("Customer Overview", 750, 450,
-                ButtonLayout.OK_BUTTON).createAndShowWindow();
+            _windowFactory.createNewCustomerOverviewWindow(_windowFactory)
+                .initAndShowWindow();
         }
     }
     

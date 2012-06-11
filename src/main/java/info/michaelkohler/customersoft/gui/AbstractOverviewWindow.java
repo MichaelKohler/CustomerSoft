@@ -46,7 +46,6 @@ public abstract class AbstractOverviewWindow extends JFrame {
         NO_BUTTONS
     }
     
-    private String _title;
     private int _width;
     private int _height;
     private ButtonLayout _layout;
@@ -57,9 +56,8 @@ public abstract class AbstractOverviewWindow extends JFrame {
      * @param aWidth defining the width of the window
      * @param aHeight defining the height of the window
      */
-    protected AbstractOverviewWindow(String aTitle, int aWidth, int aHeight,
+    protected AbstractOverviewWindow(int aWidth, int aHeight,
                                                      ButtonLayout aLayout) {
-        _title = aTitle;
         _width = aWidth;
         _height = aHeight;
         _layout = aLayout;
@@ -68,9 +66,8 @@ public abstract class AbstractOverviewWindow extends JFrame {
     /**
      * Creates and shows the window
      */
-    public void createAndShowWindow() {
+    public void initAndShowWindow() {
         CustomerSoft.logger.info("a window is getting initialized..");
-        this.setTitle(_title);
         GUIHelper.sizeAndCenterFrame(this, _width, _height);
         GUIHelper.setESCCloseable(this);
         addStandardMenubar();
@@ -88,7 +85,7 @@ public abstract class AbstractOverviewWindow extends JFrame {
      * adds the standard menu bar which is used by every window with a menu bar.
      */
     private void addStandardMenubar() {
-        this.setJMenuBar(new StandardMenuBar());
+        this.setJMenuBar(new StandardMenuBar(WindowFactory.getInstance()));
     }
     
     /**

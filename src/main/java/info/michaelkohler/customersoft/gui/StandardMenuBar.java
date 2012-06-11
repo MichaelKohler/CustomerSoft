@@ -18,8 +18,6 @@ package info.michaelkohler.customersoft.gui;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import info.michaelkohler.customersoft.gui.AbstractOverviewWindow.ButtonLayout;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Event;
@@ -46,7 +44,15 @@ public class StandardMenuBar extends JMenuBar {
     private static final int MENUITEM_HEIGHT = 20;
     private static final Color BORDER_COLOR = new Color(160, 160, 160);
     
-    public StandardMenuBar() {
+    private WindowFactory _windowFactory;
+    
+    /**
+     * Constructor which assembles the whole menu bar
+     * 
+     * @param aWindowFactory which delivers instances of the windows
+     */
+    public StandardMenuBar(WindowFactory aWindowFactory) {
+        _windowFactory = aWindowFactory;
         this.add(createFileMenu());
         this.add(createSubsystemsMenu());
         this.add(createHelpMenu());
@@ -86,9 +92,7 @@ public class StandardMenuBar extends JMenuBar {
         shortcutItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F6, 0));
         shortcutItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                ShortcutWindow scWin = new ShortcutWindow();
-                scWin.createShortcutWindow();
-                scWin.showShortcutWindow();
+                _windowFactory.createNewShortcutWindow(_windowFactory).initAndShowWindow();
             }
         });
         menu.add(shortcutItem);
@@ -142,8 +146,7 @@ public class StandardMenuBar extends JMenuBar {
         JMenuItem overviewItem = new JMenuItem("Overview..", 'O');
         overviewItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                new CustomerOverviewWindow("Customer Overview", 750, 450,
-                    ButtonLayout.OK_CANCEL_BUTTONS).createAndShowWindow();
+                _windowFactory.createNewCustomerOverviewWindow(_windowFactory).initAndShowWindow();
             }
         });
         customerItem.add(overviewItem);

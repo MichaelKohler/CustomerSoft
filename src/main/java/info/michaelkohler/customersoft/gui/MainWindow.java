@@ -46,7 +46,7 @@ public class MainWindow extends JFrame {
         GUIHelper.sizeAndCenterFrame(this, 650, 450);
         
         createContent();
-        this.setJMenuBar(new StandardMenuBar());
+        this.setJMenuBar(new StandardMenuBar(WindowFactory.getInstance()));
     }
 
     /**
