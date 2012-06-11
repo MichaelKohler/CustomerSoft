@@ -68,6 +68,6 @@ public class WindowFactory {
     * @param aWindowFactory which needs to be injected to the shortcut window
     */
   public void createNewCustomerOverviewWindow(WindowFactory aWindowFactory) {
-      new CustomerOverviewWindow(450, 300, ButtonLayout.CANCEL_BUTTON).initAndShowWindow();
+      new CustomerOverviewWindow(550, 350, ButtonLayout.CANCEL_BUTTON).initAndShowWindow();
   }
 }
