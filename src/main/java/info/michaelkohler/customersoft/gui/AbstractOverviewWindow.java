@@ -19,6 +19,8 @@ package info.michaelkohler.customersoft.gui;
  */
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -70,7 +72,11 @@ public abstract class AbstractOverviewWindow extends JFrame {
         GUIHelper.setESCCloseable(this);
         addStandardMenubar();
         this.add(createContentPanel());
-        addButtons();
+        
+        if (_layout != ButtonLayout.NO_BUTTONS) {
+            this.add(createLowerPanel(), BorderLayout.SOUTH);
+        }
+        
         GUIHelper.showComponent(this);
     }
     
@@ -82,38 +88,72 @@ public abstract class AbstractOverviewWindow extends JFrame {
     }
     
     /**
-     * adds the desired buttons to the window (lower right corner)
+     * creates the lower panel for the functions and buttons.
+     * 
+     * @return lowerPanel which needs to be added to the window
      */
-    private void addButtons() {
-        if (_layout != ButtonLayout.NO_BUTTONS) {
-            JPanel lowerPanel = new JPanel(new BorderLayout());
-            lowerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 10, 20));
+    private JPanel createLowerPanel() {
+        JPanel lowerPanel = new JPanel(new BorderLayout());
+        lowerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 10, 20));
+        lowerPanel.add(addButtonPanel(), BorderLayout.EAST);
+        return lowerPanel;
+    }
+    
+    /**
+     * adds the desired buttons to the window (lower right corner)
+     * 
+     * TODO: clean up -> there should be a way to make this cleaner
+     * 
+     * @return buttonPanel which needs to be added to the lower part
+     *                              of the window
+     */
+    private JPanel addButtonPanel() {
             JPanel buttonPanel = new JPanel(new BorderLayout());
+            JButton okButton = new JButton("OK");
+            okButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent arg0) {
+                    processClickOnOK();
+                }
+            });
+            JButton cancelButton = new JButton("Cancel");
+            cancelButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent arg0) {
+                    processClickOnCancel();
+                }
+            });
             
             switch (_layout) {
                 case OK_BUTTON:
-                    JButton okButton = new JButton("OK");
                     buttonPanel.add(okButton, BorderLayout.EAST);
                     break;
                 case CANCEL_BUTTON:
-                    JButton cancelButton = new JButton("Cancel");
                     buttonPanel.add(cancelButton, BorderLayout.EAST);
                     break;
                 case OK_CANCEL_BUTTONS:
-                    JButton okButtonBoth = new JButton("OK");
-                    buttonPanel.add(okButtonBoth, BorderLayout.WEST);
-                    JButton cancelButtonBoth = new JButton("Cancel");
-                    buttonPanel.add(cancelButtonBoth, BorderLayout.EAST);
+                    buttonPanel.add(okButton, BorderLayout.WEST);
+                    buttonPanel.add(cancelButton, BorderLayout.EAST);
                     break;
             }
             
-            lowerPanel.add(buttonPanel, BorderLayout.EAST);
-            this.add(lowerPanel, BorderLayout.SOUTH);
-        }
+            return buttonPanel;
     }
     
     /**
      * abstract method which creates the content (delegated to the subclass)
      */
     protected abstract JPanel createContentPanel();
+    
+    /**
+     * abstract method which processes the click on the OK button (delegated
+     * to the subclass)
+     */
+    protected abstract void processClickOnOK();
+    
+    /**
+     * Handles the click on the Cancel button. This can be overwritten by the sub-
+     * class if just closing the window is not enough.
+     */
+    protected void processClickOnCancel() {
+        this.dispose();
+    }
 }

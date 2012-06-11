@@ -64,4 +64,9 @@ public class CustomerOverviewWindow extends AbstractOverviewWindow {
         return panel;
     }
 
+    @Override
+    protected void processClickOnOK() {
+        System.out.println("OK clicked!");
+        
+    }
 }
