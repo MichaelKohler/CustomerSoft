@@ -70,4 +70,22 @@ public class WindowFactory {
   public void createNewCustomerOverviewWindow(WindowFactory aWindowFactory) {
       new CustomerOverviewWindow(550, 350, ButtonLayout.CANCEL_BUTTON).initAndShowWindow();
   }
+  
+  /**
+   * creates and shows a new ProductOverview window
+   * 
+   * @param aWindowFactory which needs to be injected to the shortcut window
+   */
+   public void createNewProductOverviewWindow(WindowFactory aWindowFactory) {
+       new ProductOverviewWindow(550, 350, ButtonLayout.CANCEL_BUTTON).initAndShowWindow();
+   }
+   
+   /**
+    * creates and shows a new TaskOverview window
+    * 
+    * @param aWindowFactory which needs to be injected to the shortcut window
+    */
+    public void createNewTaskOverviewWindow(WindowFactory aWindowFactory) {
+        new TaskOverviewWindow(550, 350, ButtonLayout.CANCEL_BUTTON).initAndShowWindow();
+    }
 }

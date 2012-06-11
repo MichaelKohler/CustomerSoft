@@ -87,6 +87,12 @@ public class ShortcutWindow extends JFrame {
         if (aShortcut.equals("CUST_OVER")) {
             _windowFactory.createNewCustomerOverviewWindow(_windowFactory);
         }
+        else if (aShortcut.equals("PROD_OVER")) {
+            _windowFactory.createNewProductOverviewWindow(_windowFactory);
+        }
+        else if (aShortcut.equals("TASK_OVER")) {
+            _windowFactory.createNewTaskOverviewWindow(_windowFactory);
+        }
     }
     
     /**

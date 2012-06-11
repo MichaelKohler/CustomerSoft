@@ -153,7 +153,7 @@ public class StandardMenuBar extends JMenuBar {
         JMenuItem tasksItem = new JMenuItem("Tasks...", 'T');
         tasksItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                System.out.println("Tasks called");
+                _windowFactory.createNewTaskOverviewWindow(_windowFactory);
             }
         });
         customerItem.add(tasksItem);
@@ -163,7 +163,7 @@ public class StandardMenuBar extends JMenuBar {
         JMenuItem productsItem = new JMenuItem("Products...", 'P');
         productsItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                System.out.println("Products called");
+                _windowFactory.createNewTaskOverviewWindow(_windowFactory);
             }
         });
         menu.add(productsItem);
