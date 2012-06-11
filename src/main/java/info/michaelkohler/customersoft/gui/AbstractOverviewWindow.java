@@ -55,6 +55,7 @@ public abstract class AbstractOverviewWindow extends JFrame {
      * 
      * @param aWidth defining the width of the window
      * @param aHeight defining the height of the window
+     * @param aLayout defining the layout of the buttons
      */
     protected AbstractOverviewWindow(int aWidth, int aHeight,
                                                      ButtonLayout aLayout) {

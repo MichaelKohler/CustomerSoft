@@ -35,6 +35,10 @@ public class TaskOverviewWindow extends AbstractOverviewWindow {
     /**
      * Constructor which calls the superclass' constructor with the desired
      * window size.
+     * 
+     * @param aWidth defining the width of the window
+     * @param aHeight defining the height of the window
+     * @param aLayout defining the layout of the buttons
      */
     public TaskOverviewWindow(int aWidth, int aHeight, ButtonLayout aLayout) {
         super(aWidth, aHeight, aLayout);
