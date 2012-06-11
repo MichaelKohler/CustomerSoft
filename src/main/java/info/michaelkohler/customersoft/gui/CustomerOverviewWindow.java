@@ -47,8 +47,31 @@ public class CustomerOverviewWindow extends AbstractOverviewWindow {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         
-        final String[] columnNames = { "Test1", "Test2", "Test3" };
-        final String[][] data = {
+        final String[] columnNames = getColumnNames();
+        final String[][] data = getData();
+        ScrollableTable scrollableTablePane = new ScrollableTable(data, columnNames);
+        panel.add(scrollableTablePane, BorderLayout.CENTER);
+        
+        return panel;
+    }
+    
+    /**
+     * gets the column names for the table
+     * 
+     * @return names which should be displayed
+     */
+    private String[] getColumnNames() {
+        String[] names = { "Test1", "Test2", "Test3" };
+        return names;
+    }
+    
+    /**
+     * gets the data for the table
+     * 
+     * @return data which needs to be shown inside the table
+     */
+    private String[][] getData() {
+        String[][] data = {
                 { "foo1", "foo2", "foo3" },
                 { "bar1", "bar2", "bar3" },
                 { "bar1", "bar2", "bar3" },
@@ -58,13 +81,11 @@ public class CustomerOverviewWindow extends AbstractOverviewWindow {
                 { "bar1", "bar2", "bar3" },
                 { "bar1", "bar2", "bar3" }
         };
-        
-        ScrollableTable scrollableTablePane = new ScrollableTable(data, columnNames);
-        panel.add(scrollableTablePane, BorderLayout.CENTER);
-        return panel;
+        return data;
     }
 
     @Override
+    // TODO
     protected void processClickOnOK() {
         System.out.println("OK clicked!");
         
