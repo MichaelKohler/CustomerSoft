@@ -18,6 +18,8 @@ package info.michaelkohler.customersoft.gui;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import info.michaelkohler.customersoft.gui.AbstractOverviewWindow.ButtonLayout;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Event;
@@ -140,8 +142,8 @@ public class StandardMenuBar extends JMenuBar {
         JMenuItem overviewItem = new JMenuItem("Overview..", 'O');
         overviewItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                new CustomerOverviewWindow("Customer Overview", 750, 450)
-                      .createAndShowWindow();
+                new CustomerOverviewWindow("Customer Overview", 750, 450,
+                    ButtonLayout.OK_CANCEL_BUTTONS).createAndShowWindow();
             }
         });
         customerItem.add(overviewItem);

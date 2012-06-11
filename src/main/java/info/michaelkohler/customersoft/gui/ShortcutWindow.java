@@ -18,6 +18,8 @@ package info.michaelkohler.customersoft.gui;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import info.michaelkohler.customersoft.gui.AbstractOverviewWindow.ButtonLayout;
+
 import java.awt.BorderLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -76,7 +78,8 @@ public class ShortcutWindow extends JFrame {
      */
     private void processShortcut(String aShortcut) {
         if (aShortcut.equals("CUST_OVER")) {
-            new CustomerOverviewWindow("Customer Overview", 750, 450).createAndShowWindow();
+            new CustomerOverviewWindow("Customer Overview", 750, 450,
+                ButtonLayout.OK_BUTTON).createAndShowWindow();
         }
     }
     

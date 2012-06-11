@@ -37,8 +37,9 @@ public class CustomerOverviewWindow extends AbstractOverviewWindow {
      * Constructor which calls the superclass' constructor with the desired
      * window size.
      */
-    public CustomerOverviewWindow(String aTitle, int aWidth, int aHeight) {
-        super(aTitle, aWidth, aHeight);
+    public CustomerOverviewWindow(String aTitle, int aWidth, int aHeight,
+                                                  ButtonLayout aLayout) {
+        super(aTitle, aWidth, aHeight, aLayout);
     }
 
     @Override

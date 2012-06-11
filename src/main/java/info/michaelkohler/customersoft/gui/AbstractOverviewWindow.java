@@ -18,6 +18,10 @@ package info.michaelkohler.customersoft.gui;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import java.awt.BorderLayout;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -33,9 +37,15 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public abstract class AbstractOverviewWindow extends JFrame {
     
+    public enum ButtonLayout {
+        OK_BUTTON, CANCEL_BUTTON, OK_CANCEL_BUTTONS,
+        NO_BUTTONS
+    }
+    
     private String _title;
     private int _width;
     private int _height;
+    private ButtonLayout _layout;
     
     /**
      * Constructor (should not used except by subclasses)
@@ -43,10 +53,12 @@ public abstract class AbstractOverviewWindow extends JFrame {
      * @param aWidth defining the width of the window
      * @param aHeight defining the height of the window
      */
-    protected AbstractOverviewWindow(String aTitle, int aWidth, int aHeight) {
+    protected AbstractOverviewWindow(String aTitle, int aWidth, int aHeight,
+                                                     ButtonLayout aLayout) {
         _title = aTitle;
         _width = aWidth;
         _height = aHeight;
+        _layout = aLayout;
     }
     
     /**
@@ -58,6 +70,7 @@ public abstract class AbstractOverviewWindow extends JFrame {
         GUIHelper.setESCCloseable(this);
         addStandardMenubar();
         this.add(createContentPanel());
+        addButtons();
         GUIHelper.showComponent(this);
     }
     
@@ -66,6 +79,37 @@ public abstract class AbstractOverviewWindow extends JFrame {
      */
     private void addStandardMenubar() {
         this.setJMenuBar(new StandardMenuBar());
+    }
+    
+    /**
+     * adds the desired buttons to the window (lower right corner)
+     */
+    private void addButtons() {
+        if (_layout != ButtonLayout.NO_BUTTONS) {
+            JPanel lowerPanel = new JPanel(new BorderLayout());
+            lowerPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 10, 20));
+            JPanel buttonPanel = new JPanel(new BorderLayout());
+            
+            switch (_layout) {
+                case OK_BUTTON:
+                    JButton okButton = new JButton("OK");
+                    buttonPanel.add(okButton, BorderLayout.EAST);
+                    break;
+                case CANCEL_BUTTON:
+                    JButton cancelButton = new JButton("Cancel");
+                    buttonPanel.add(cancelButton, BorderLayout.EAST);
+                    break;
+                case OK_CANCEL_BUTTONS:
+                    JButton okButtonBoth = new JButton("OK");
+                    buttonPanel.add(okButtonBoth, BorderLayout.WEST);
+                    JButton cancelButtonBoth = new JButton("Cancel");
+                    buttonPanel.add(cancelButtonBoth, BorderLayout.EAST);
+                    break;
+            }
+            
+            lowerPanel.add(buttonPanel, BorderLayout.EAST);
+            this.add(lowerPanel, BorderLayout.SOUTH);
+        }
     }
     
     /**
