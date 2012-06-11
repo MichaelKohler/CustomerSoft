@@ -18,6 +18,8 @@ package info.michaelkohler.customersoft.gui;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import info.michaelkohler.customersoft.CustomerSoft;
+
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -67,6 +69,7 @@ public abstract class AbstractOverviewWindow extends JFrame {
      * Creates and shows the window
      */
     public void createAndShowWindow() {
+        CustomerSoft.logger.info("a window is getting initialized..");
         this.setTitle(_title);
         GUIHelper.sizeAndCenterFrame(this, _width, _height);
         GUIHelper.setESCCloseable(this);
@@ -78,6 +81,7 @@ public abstract class AbstractOverviewWindow extends JFrame {
         }
         
         GUIHelper.showComponent(this);
+        CustomerSoft.logger.info("new window is ready..");
     }
     
     /**

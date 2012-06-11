@@ -18,6 +18,9 @@ package info.michaelkohler.customersoft;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import info.michaelkohler.customersoft.gui.GUIHelper;
 import info.michaelkohler.customersoft.gui.MainWindow;
 
@@ -29,6 +32,7 @@ import info.michaelkohler.customersoft.gui.MainWindow;
  *
  */
 public class CustomerSoft {
+    public static Logger logger;
 
     /**
      * Main method responsible to open the main window.
@@ -36,6 +40,9 @@ public class CustomerSoft {
      * @param args
      */
     public static void main(String[] args) {
+        logger = Logger.getLogger("");
+        logger.setLevel(Level.INFO);
+        
         GUIHelper.prettify();
         createMainWindow();
     }

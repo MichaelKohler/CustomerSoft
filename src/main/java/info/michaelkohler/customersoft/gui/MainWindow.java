@@ -1,5 +1,7 @@
 package info.michaelkohler.customersoft.gui;
 
+import info.michaelkohler.customersoft.CustomerSoft;
+
 import javax.swing.JFrame;
 
 /*
@@ -36,6 +38,7 @@ public class MainWindow extends JFrame {
     }
 
     public void createMainWindowGUI() {
+        CustomerSoft.logger.info("Initializing the Main Window..");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(true);
         this.setTitle("CustomerSoft - Main (History)");
@@ -51,7 +54,7 @@ public class MainWindow extends JFrame {
      */
     private void createContent() {
         // TODO Auto-generated method stub
-        
+        CustomerSoft.logger.info("Create the main window's content..");
     }
 
 }
