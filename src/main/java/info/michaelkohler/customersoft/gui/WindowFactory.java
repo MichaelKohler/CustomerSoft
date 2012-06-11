@@ -53,22 +53,21 @@ public class WindowFactory {
     }
     
     /**
-     * returns a new Shortcut window
+     * creates and shows a new Shortcut window
      * 
      * @param aWindowFactory which needs to be injected to the shortcut window
      * @return new shortcut window
      */
-   public ShortcutWindow createNewShortcutWindow(WindowFactory aWindowFactory) {
-       return new ShortcutWindow(aWindowFactory);
+   public void createNewShortcutWindow(WindowFactory aWindowFactory) {
+       new ShortcutWindow(aWindowFactory).initAndShowWindow();
    }
    
    /**
-    * returns a new CustomerOverview window
+    * creates and shows a new CustomerOverview window
     * 
     * @param aWindowFactory which needs to be injected to the shortcut window
-    * @return new shortcut window
     */
-  public CustomerOverviewWindow createNewCustomerOverviewWindow(WindowFactory aWindowFactory) {
-      return new CustomerOverviewWindow(450, 300, ButtonLayout.CANCEL_BUTTON);
+  public void createNewCustomerOverviewWindow(WindowFactory aWindowFactory) {
+      new CustomerOverviewWindow(450, 300, ButtonLayout.CANCEL_BUTTON).initAndShowWindow();
   }
 }

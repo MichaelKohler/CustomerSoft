@@ -85,8 +85,7 @@ public class ShortcutWindow extends JFrame {
      */
     private void processShortcut(String aShortcut) {
         if (aShortcut.equals("CUST_OVER")) {
-            _windowFactory.createNewCustomerOverviewWindow(_windowFactory)
-                .initAndShowWindow();
+            _windowFactory.createNewCustomerOverviewWindow(_windowFactory);
         }
     }
     

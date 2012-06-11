@@ -92,7 +92,7 @@ public class StandardMenuBar extends JMenuBar {
         shortcutItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F6, 0));
         shortcutItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                _windowFactory.createNewShortcutWindow(_windowFactory).initAndShowWindow();
+                _windowFactory.createNewShortcutWindow(_windowFactory);
             }
         });
         menu.add(shortcutItem);
@@ -146,7 +146,7 @@ public class StandardMenuBar extends JMenuBar {
         JMenuItem overviewItem = new JMenuItem("Overview..", 'O');
         overviewItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                _windowFactory.createNewCustomerOverviewWindow(_windowFactory).initAndShowWindow();
+                _windowFactory.createNewCustomerOverviewWindow(_windowFactory);
             }
         });
         customerItem.add(overviewItem);
