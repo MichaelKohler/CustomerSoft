@@ -172,7 +172,7 @@ public class StandardMenuBar extends JMenuBar {
         JMenuItem paramItem = new JMenuItem("Parameter", 'a');
         paramItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                System.out.println("Params called");
+                _windowFactory.createNewParameterWindow();
             }
         });
         menu.add(paramItem);

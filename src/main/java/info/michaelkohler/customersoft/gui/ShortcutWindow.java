@@ -93,6 +93,9 @@ public class ShortcutWindow extends JFrame {
         else if (aShortcut.equals("TASK_OVER")) {
             _windowFactory.createNewTaskOverviewWindow(_windowFactory);
         }
+        else if (aShortcut.equals("PRG_PAR")) {
+            _windowFactory.createNewParameterWindow();
+        }
     }
     
     /**

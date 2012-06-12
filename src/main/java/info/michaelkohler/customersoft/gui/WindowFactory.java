@@ -88,4 +88,11 @@ public class WindowFactory {
     public void createNewTaskOverviewWindow(WindowFactory aWindowFactory) {
         new TaskOverviewWindow(550, 350, ButtonLayout.CANCEL_BUTTON).initAndShowWindow();
     }
+    
+    /**
+     * creates and shows a new parameter window
+     */
+    public void createNewParameterWindow() {
+        new ParameterWindow().initAndShowWindow();
+    }
 }
